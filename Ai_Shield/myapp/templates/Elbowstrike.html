@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elbow Strike</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .trying-badge {
+            
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .title {
+            font-family: serif;
+            font-style: italic;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: -5px;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-container {
+            flex: 2;
+            background: #000;
+            aspect-ratio: 16/9;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .upload-area {
+            border: 2px dashed #666;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            width: 80%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #2ECC40;
+            background: rgba(46, 204, 64, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .upload-text {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .upload-subtext {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2ECC40;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+
+        .video-controls button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: #333;
+        }
+
+        #progress {
+            width: 0%;
+            height: 100%;
+            background: red;
+            transition: width 0.1s linear;
+        }
+
+        .stats-container {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #2ECC40;
+        }
+
+        .stats-title {
+            color: #2ECC40;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .accuracy-display {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .accuracy-label {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .accuracy-value {
+            font-size: 3rem;
+            color: #2ECC40;
+            font-weight: bold;
+        }
+
+        .detailed-metrics {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .metric {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .live-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: white;
+            border: 2px solid #FF4136;
+            color: #FF4136;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            cursor: pointer;
+        }
+
+        .chatbot-icon {
+            background-color: #F472B6;
+            border-radius: 50%;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-icon:hover {
+            background-color: #f48fb1;
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="header">
+        <span class="trying-badge"></span>
+        <div>
+            <h1 class="title">Analyze your Video</h1>
+            <p class="subtitle">AiShield</p>
+        </div>
+        <div style="width: 100px;"></div>
+    </div>
+
+    <div class="main-content">
+        <div class="video-container">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'process_video' %}">
+                {% csrf_token %}
+                <div class="upload-area">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Click to upload your video</div>
+                    <div class="upload-subtext">or drag and drop your video file here</div>
+                    <input type="file" name="video" id="video" accept="video/*" style="display:none">
+                </div>
+                <button type="submit" class="submit-btn">Analyze Video</button>
+            </form>
+<!-- 
+            {% if video_url %}
+            <video id="video-player" width="640" controls>
+                <source src="{{ video_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            {% endif %} -->
+
+            <div class="video-controls">
+                <button id="play-pause-btn">▶</button>
+                <button id="pause-btn" style="display:none;">⏸</button>
+                <button id="stop-btn">⏹</button>
+                <div class="progress-bar">
+                    <div id="progress"></div>
+                </div>
+                <button id="mute-btn">🔊</button>
+                <button id="replay-btn">⤢</button>
+            </div>
+        </div>
+    
+        <div class="stats-container">
+            <h2 class="stats-title">Analyzing your steps...</h2>
+            <div class="accuracy-display">
+                <p class="accuracy-label">Your Action Accuracy Is :</p>
+                <p>{{ ibm_response }}</p>
+            </div>
+        
+            <div class="detailed-metrics">
+
+                <div class="metric">
+                    <p>Elbow Frames:</p>
+                    {% if Elbow_Frames %}
+                    <p>{{ Elbow_Frames }}</p>
+                    {% else %}
+                    <p>0</p>
+                    {% endif %}
+                </div>
+                <div class="metric">
+                    <p>Kick Frame:</p>
+                    {% if Kick_Frame %}
+                    <p>{{ Kick_Frame }}</p>
+                    {% else %}
+                    <p>0</p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <span class="live-badge">You're Able to analyze your steps live</span>
+    </div>
+
+    <div class="chatbot">
+        <div class="chatbot-icon">
+            <a href="./Defendchat.html" style="text-decoration: none;">
+                <i data-lucide="bot" style="width: 32px; height: 32px; color: #2A2A2A;"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Video player controls
+        const videoPlayer = document.getElementById('video-player');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const muteBtn = document.getElementById('mute-btn');
+        const replayBtn = document.getElementById('replay-btn');
+        const progressBar = document.getElementById('progress');
+        const videoInput = document.getElementById('video');
+        const uploadArea = document.querySelector('.upload-area');
+
+        // Show file name when selected
+        uploadArea.addEventListener('click', () => {
+            videoInput.click();
+        });
+
+        videoInput.addEventListener('change', function() {
+            if(this.files && this.files[0]) {
+                uploadArea.querySelector('.upload-text').textContent = this.files[0].name;
+            }
+        });
+
+        if(videoPlayer) {
+            // Play/Pause Button Logic
+            playPauseBtn.addEventListener('click', () => {
+                videoPlayer.play();
+                playPauseBtn.style.display = 'none';
+                pauseBtn.style.display = 'inline-block';
+            });
+
+            pauseBtn.addEventListener('click', () => {
+                videoPlayer.pause();
+                pauseBtn.style.display = 'none';
+                playPauseBtn.style.display = 'inline-block';
+            });
+
+            // Stop Video Logic
+            stopBtn.addEventListener('click', () => {
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+                playPauseBtn.style.display = 'inline-block';
+                pauseBtn.style.display = 'none';
+            });
+
+            // Mute/Unmute Logic
+            muteBtn.addEventListener('click', () => {
+                videoPlayer.muted = !videoPlayer.muted;
+                muteBtn.textContent = videoPlayer.muted ? '🔇' : '🔊';
+            });
+
+            // Replay Logic
+            replayBtn.addEventListener('click', () => {
+                videoPlayer.currentTime = 0;
+                videoPlayer.play();
+            });
+
+            // Update Progress Bar
+            videoPlayer.addEventListener('timeupdate', () => {
+                const progress = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+                progressBar.style.width = progress + '%';
+            });
+        }
+    </script>
+</body>
+</html>

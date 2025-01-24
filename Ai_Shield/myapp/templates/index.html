@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiShield</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            min-height: 100vh;
+            padding-bottom: 3rem;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 50px;
+            margin: 0.5rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .carousel {
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-height: 500px;
+        }
+
+        .carousel-content {
+            display: none;
+            width: 100%;
+            animation: fadeEffect 0.5s ease-in-out;
+        }
+
+        @keyframes fadeEffect {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .carousel-content.active {
+            display: flex;
+        }
+
+        .image-section {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-section img:hover {
+            transform: scale(1.02);
+        }
+
+        .info-section {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-section h2 {
+            color: #2ecc71;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #2ecc71;
+            border-radius: 2px;
+        }
+
+        .info-section p {
+            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section p::before {
+            content: '•';
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-btn {
+            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(0);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #2ecc71;
+            transform: scale(1.3);
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            cursor: pointer;
+        }
+
+        .chatbot-icon {
+            background-color: #F472B6;
+            border-radius: 50%;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .chatbot-icon:hover {
+            background-color: #f48fb1;
+        }
+
+        @media (max-width: 1024px) {
+            .carousel {
+                flex-direction: column;
+            }
+
+            .image-section img {
+                height: 250px;
+            }
+
+            .info-section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 1.5rem auto;
+            }
+
+            .info-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .info-section p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i data-lucide="shield" style="color: white; width: 24px; height: 24px;"></i>
+            AiShield
+        </a>
+        <div class="nav-links">
+            <a href="{% url 'train_yourself' %}">Train Yourself</a>
+            <a href="{% url 'safemap' %}">SafeMap</a>
+            <a href="{% url 'defendchat' %}">DefendChat AI</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="carousel">
+            <div class="carousel-content active">
+                <div class="image-section">
+                    <img src="https://images.unsplash.com/photo-1590556409324-aa1d726e5c3c" alt="Modern Self Defense">
+                </div>
+                <div class="info-section">
+                    <h2>Why Self Defense Matters Today</h2>
+                    <p>Rising crime rates in urban areas make personal safety crucial</p>
+                    <p>Increased incidents of harassment in public spaces</p>
+                    <p>Growing need for self-reliance in emergency situations</p>
+                    <p>Empowerment through physical and mental preparedness</p>
+                    <p>Protection against modern security threats</p>
+                    <p>Building confidence in daily life</p>
+                </div>
+            </div>
+
+            <div class="carousel-content">
+                <div class="image-section">
+                    <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff" alt="Risks Without Self Defense">
+                </div>
+                <div class="info-section">
+                    <h2>Risks of Not Knowing Self Defense</h2>
+                    <p>Vulnerability to physical attacks and harassment</p>
+                    <p>Increased anxiety in public spaces</p>
+                    <p>Limited ability to protect yourself and loved ones</p>
+                    <p>Reduced confidence in daily activities</p>
+                    <p>Higher risk during emergency situations</p>
+                    <p>Dependency on others for personal safety</p>
+                </div>
+            </div>
+
+            <div class="carousel-content">
+                <div class="image-section">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" alt="Modern Self Defense Training">
+                </div>
+                <div class="info-section">
+                    <h2>Benefits of Self Defense Training</h2>
+                    <p>Improved physical fitness and strength</p>
+                    <p>Enhanced situational awareness</p>
+                    <p>Better mental preparedness for emergencies</p>
+                    <p>Increased self-confidence and independence</p>
+                    <p>Valuable life-saving skills</p>
+                    <p>Strong sense of personal security</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-buttons">
+            <button class="carousel-btn" onclick="moveCarousel(-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"/>
+                </svg>
+                Previous
+            </button>
+            <button class="carousel-btn" onclick="moveCarousel(1)">
+                Next
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="carousel-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </div>
+
+    <div class="chatbot">
+        <div class="chatbot-icon">
+            <a href="{% url 'defendchat' %}" style="text-decoration: none;">
+                <i data-lucide="bot" style="width: 32px; height: 32px; color: #2A2A2A;"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-content');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveCarousel(direction) {
+            slides[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            updateIndicators();
+        }
+
+        // Add click events to indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = index;
+                slides[currentSlide].classList.add('active');
+                updateIndicators();
+            });
+        });
+    </script>
+</body>
+</html>
