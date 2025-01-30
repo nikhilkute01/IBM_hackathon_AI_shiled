@@ -18,9 +18,9 @@ Leveraging Machine Learning, Computer Vision, and IBM’s Watsonx tools, AiShiel
 🔹 SafeMap
 ✅ Maps safe routes based on nearby public utilities like police stations and hospitals.
 ✅ Routes are color-coded:
-
 🟢 Green (Safe Route) – Near police stations, hospitals, and public areas.
 🔴 Red (Unsafe Route) – Near bars, nightclubs, and isolated areas.
+
 🔹 DefendChat AI
 ✅ AI chatbot powered by IBM Watsonx Assistant for emergency assistance.
 ✅ Provides real-time safety tips and emergency response guidance.
@@ -31,16 +31,19 @@ Leveraging Machine Learning, Computer Vision, and IBM’s Watsonx tools, AiShiel
 ✅ Django
 ✅ OpenCV (cv2)
 ✅ MediaPipe
+
 🤖 AI & Machine Learning
 ✅ IBM Watsonx.ai Studio
 ✅ IBM Watsonx Assistant
 ✅ IBM Watsonx.ai Runtime
 ✅ IBM Auto AI
+
 📊 Data Storage & Processing
 ✅ Pandas
 ✅ NumPy
 ✅ Microsoft Excel / Google Sheets
 ✅ IBM Cloud Object Storage
+
 🌍 Web & API Integration
 ✅ Django Framework
 ✅ Requests
