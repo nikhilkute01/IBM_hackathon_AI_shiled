@@ -66,5 +66,5 @@ Ensure you have the following installed:<br>
 
 ## 📂 Project Images  
 🔗 **Access the project resources here:**  
-- [AiShield](https://drive.google.com/drive/folders/1ClWrtPaCGVfkKs-XDr0Fy8kbiisJNwde)  
-- [AiShield](https://drive.google.com/drive/folders/1ClWrtPaCGVfkKs-XDr0Fy8kbiisJNwde)
+- [AiShield](https://drive.google.com/file/d/1tVUFLgUg1W6lP8tJSdRsLP8Q-OGXUtQf/view)  
+- [AiShield](https://drive.google.com/file/d/1BhAlfneTbrrhkGXYKEMHxaU2h7h_Z6a9/view)
