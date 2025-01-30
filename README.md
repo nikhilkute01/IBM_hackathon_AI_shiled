@@ -1,63 +1,64 @@
 📌 AiShield - AI-Powered Women's Safety Solution
-🚀 Enhancing women's safety using AI & Machine Learning.
-
-📖 Overview
-AiShield is an AI-driven web application designed to enhance women's safety by providing:
-✔ Self-defense training
-✔ Safe route navigation
-✔ AI-powered emergency assistance
+🚀 Enhancing women's safety using AI & Machine Learning.                                                                                                                                   
+📖 Overview<br>
+AiShield is an AI-driven web application designed to enhance women's safety by providing:<br>
+✔ Self-defense training<br>
+✔ Safe route navigation<br>
+✔ AI-powered emergency assistance<br>
 
 Leveraging Machine Learning, Computer Vision, and IBM’s Watsonx tools, AiShield empowers women with proactive security solutions.
 
-🌟 Key Features
-🔹 Train Yourself
-✅ Self-defense training videos for learning techniques.
-✅ Users can practice, record actions, and upload them for AI-based accuracy analysis.
-✅ AI & ML models (IBM Watsonx.ai) evaluate user movements and provide feedback.
+🌟 Key Features<br>
+🔹 Train Yourself<br>
+✅ Self-defense training videos for learning techniques.<br>
+✅ Users can practice, record actions, and upload them for AI-based accuracy analysis.<br>
+✅ AI & ML models (IBM Watsonx.ai) evaluate user movements and provide feedback.<br>
 
-🔹 SafeMap
-✅ Maps safe routes based on nearby public utilities like police stations and hospitals.
-✅ Routes are color-coded:
-🟢 Green (Safe Route) – Near police stations, hospitals, and public areas.
-🔴 Red (Unsafe Route) – Near bars, nightclubs, and isolated areas.
+🔹 SafeMap<br>
+✅ Maps safe routes based on nearby public utilities like police stations and hospitals.<br>
+✅ Routes are color-coded:<br>
+🟢 Green (Safe Route) – Near police stations, hospitals, and public areas.<br>
+🔴 Red (Unsafe Route) – Near bars, nightclubs, and isolated areas.<br>
 
-🔹 DefendChat AI
-✅ AI chatbot powered by IBM Watsonx Assistant for emergency assistance.
-✅ Provides real-time safety tips and emergency response guidance.
+🔹 DefendChat AI<br>
+✅ AI chatbot powered by IBM Watsonx Assistant for emergency assistance.<br>
+✅ Provides real-time safety tips and emergency response guidance.<br>
 
-🛠️ Technology Stack
-👨‍💻 Programming Languages & Frameworks
-✅ Python
-✅ Django
-✅ OpenCV (cv2)
-✅ MediaPipe
+🛠️ Technology Stack<br>
+👨‍💻 Programming Languages & Frameworks<br>
+✅ Python<br>
+✅ Django<br>
+✅ OpenCV (cv2)<br>
+✅ MediaPipe<br>
 
-🤖 AI & Machine Learning
-✅ IBM Watsonx.ai Studio
-✅ IBM Watsonx Assistant
-✅ IBM Watsonx.ai Runtime
-✅ IBM Auto AI
+🤖 AI & Machine Learning<br>
+✅ IBM Watsonx.ai Studio<br>
+✅ IBM Watsonx Assistant<br>
+✅ IBM Watsonx.ai Runtime<br>
+✅ IBM Auto AI<br>
 
-📊 Data Storage & Processing
-✅ Pandas
-✅ NumPy
-✅ Microsoft Excel / Google Sheets
-✅ IBM Cloud Object Storage
+📊 Data Storage & Processing<br>
+✅ Pandas<br>
+✅ NumPy<br>
+✅ Microsoft Excel / Google Sheets<br>
+✅ IBM Cloud Object Storage<br>
 
-🌍 Web & API Integration
-✅ Django Framework
-✅ Requests
-📝 Development
-✅ IBM R Notebook
-✅ Jupyter Notebook
-📌 Methodology
+🌍 Web & API Integration<br>
+✅ Django Framework<br>
+✅ Requests<br>
+📝 Development<br>
+✅ IBM R Notebook<br>
+✅ Jupyter Notebook<br>
+📌 Methodology<br>
 AiShield integrates AI and ML models to provide real-time assistance for women's safety.
-🔹 It analyzes user inputs, processes data using computer vision and AI models, and delivers actionable insights through web-based services.
+🔹 It analyzes user inputs, processes data using computer vision and AI models, and delivers actionable insights through web-based services.<br>
 
-🚀 Installation & Setup
-📌 Prerequisites
-Ensure you have the following installed:
-✅ Python 3.x
-✅ Django
-✅ OpenCV (cv2)
-✅ MediaPipe
+🚀 Installation & Setup<br>
+📌 Prerequisites<br>
+Ensure you have the following installed:<br>
+✅ Python 3.x<br>
+✅ Django<br>
+✅ OpenCV (cv2)<br>
+✅ MediaPipe<br>
+
+ Watch the demo here: AiShield Demo
