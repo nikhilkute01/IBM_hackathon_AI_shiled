@@ -50,7 +50,7 @@ Leveraging Machine Learning, Computer Vision, and IBM’s Watsonx tools, AiShiel
 ✅ IBM R Notebook<br>
 ✅ Jupyter Notebook<br>
 📌 Methodology<br>
-AiShield integrates AI and ML models to provide real-time assistance for women's safety.
+AiShield integrates AI and ML models to provide real-time assistance for women's safety.<br>
 🔹 It analyzes user inputs, processes data using computer vision and AI models, and delivers actionable insights through web-based services.<br>
 
 🚀 Installation & Setup<br>
@@ -61,4 +61,5 @@ Ensure you have the following installed:<br>
 ✅ OpenCV (cv2)<br>
 ✅ MediaPipe<br>
 
- Watch the demo here: AiShield Demo
+### 🚀 Live Demo  
+🔗 **Watch the demo here:** [AiShield Demo](https://drive.google.com/file/d/1vY0fYMWAj6_8IR6jTnL6wbOm9y98aDKs/view?usp=sharing)
